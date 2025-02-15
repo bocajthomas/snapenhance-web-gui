@@ -22,7 +22,7 @@ https://raw.githubusercontent.com/appelmoesgg/snapenhance-web-gui/master/snapenh
 > [!WARNING]
 > If you are currently using the snapEnhance WEB script, you should disable/delete it because it they will interfere with eachother
 
-## Download
+## Download source
 [Github](https://github.com/appelmoesgg/snapenhance-web-gui/blob/main/snapenhanceGui.user.js)
 
 [Greasyfork - Not updated (yet)](https://greasyfork.org/en/scripts/483732-snapenhance-web)
