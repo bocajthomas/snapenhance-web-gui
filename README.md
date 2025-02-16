@@ -17,7 +17,7 @@ The web version of SnapEnhance (now with a cool GUI😎)
 
 ## Installation
 1. Install [Tampermonkey (Chrome)](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) | [Tampermonkey (Firefox)](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
-2. You can click the link below to install the userscript instantly:
+2. Now you can click the link below to install the userscript instantly:
 https://raw.githubusercontent.com/appelmoesgg/snapenhance-web-gui/master/snapenhanceGui.user.js
 > [!WARNING]
 > If you are currently using the snapEnhance WEB script, you should disable/delete it because it they will interfere with eachother
