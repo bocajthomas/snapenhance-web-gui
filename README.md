@@ -28,4 +28,4 @@ https://raw.githubusercontent.com/appelmoesgg/snapenhance-web-gui/master/snapenh
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=appelmoesgg/snapenhance-web-gui&type=Date)](https://star-history.com/#appelmoesgg/snapenhance-web-gui&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=appelmoesgg/snapenhance-web-gui&type=Date)](https://www.star-history.com/#appelmoesgg/snapenhance-web-gui&Date)
