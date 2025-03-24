@@ -2,7 +2,7 @@
 // @name         SnapEnhance Web with GUI
 // @namespace    snapenhance-web-gui
 // @description  A userscript to Enhance the User experience on Snapchat Web
-// @version      1.2.0
+// @version      1.2.1
 // @author       appelmoesGG,SnapEnhance
 // @source       https://github.com/SnapEnhance/web/
 // @license      GPL-3.0-only
@@ -23,7 +23,7 @@ CURRENT KNOWN BUGS:
 */
 
 if (!"SEversion" in localStorage){ // Save current version so we can add settings in future versions of SE (if that makes sense)
-    localStorage.setItem("SEversion", "1.2.0")
+    localStorage.setItem("SEversion", "1.2.1")
 }
 
 const bc = new BroadcastChannel("settingsBroadcast")
