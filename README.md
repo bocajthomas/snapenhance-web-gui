@@ -14,7 +14,7 @@ The web version of SnapEnhance (now with a cool GUI😎)
 
 ## Known bugs
 - "No Typing Indication" is not working when "Hide Bitmoji" is off
-- All conversations are marked as "away" when "Anti Unfocus Blur" is off
+- ~~All conversations are marked as "away" when "Anti Unfocus Blur" is off~~
 
 ## Installation
 1. Install [Tampermonkey (Chrome)](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) | [Tampermonkey (Firefox)](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
