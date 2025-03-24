@@ -227,13 +227,13 @@ function injectGui(){
         }
         return result;
     });
-    // Always focused - No way this works 1st try
-    const oldFocus = document.hasFocus;
+    // Always focused - Fixed now 24/3/25 17:44
+    const oldFocus = document.hasFocus();
     document.hasFocus = () => {
 	    if (snapEnhanceSettings["Anti Unfocus Blur"]){
 	        return true;
 	    } else {
-		return oldFocus();    
+		return oldFocus;
 	    }
     }
 
