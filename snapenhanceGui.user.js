@@ -227,8 +227,17 @@ function injectGui(){
         }
         return result;
     });
-    // Always focused
-    simpleHook(document, "hasFocus", () => () => snapEnhanceSettings["Anti Unfocus Blur"]);
+    // Always focused - No way this works 1st try
+    const oldFocus = document.hasFocus;
+    document.hasFocus = () => {
+	    if (snapEnhanceSettings["Anti Unfocus Blur"]){
+	        return true;
+	    } else {
+		return oldFocus();    
+	    }
+    }
+
+	
     const oldAddEventListener = EventTarget.prototype.addEventListener;
     Object.defineProperty(EventTarget.prototype, "addEventListener", {
         value: function (...args) {
