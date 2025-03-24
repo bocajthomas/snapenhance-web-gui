@@ -247,7 +247,7 @@ function injectGui(){
             }
             if (eventName === "keydown")
                 return;
-            if (eventName === "focus")
+            if (eventName === "focus" && snapEnhanceSettings["Anti Unfocus Blur"])
                 return;
             return oldAddEventListener.call(this, ...args);
         }
