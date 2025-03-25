@@ -242,13 +242,15 @@ function injectGui(){
     Object.defineProperty(EventTarget.prototype, "addEventListener", {
         value: function (...args) {
             const eventName = args[0];
-            if (snapEnhanceSettings["Anti Unfocus Blur"]){
-                return oldAddEventListener.call(this, ...args);
-            }
-            if (eventName === "keydown")
+		
+            if (eventName === "keydown"){
                 return;
-            if (eventName === "focus" && snapEnhanceSettings["Anti Unfocus Blur"])
+	    }
+		
+            if (eventName === "focus" && snapEnhanceSettings["Anti Unfocus Blur"]){
                 return;
+	    }
+		
             return oldAddEventListener.call(this, ...args);
         }
     });
