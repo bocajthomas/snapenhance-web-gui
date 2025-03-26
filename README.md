@@ -29,8 +29,7 @@ https://raw.githubusercontent.com/appelmoesgg/snapenhance-web-gui/master/snapenh
 
 ## Developing
 - Main file is just snapenhanceGui.js <br>
-- Fuck Typescript I don't use that shit (ignore everything else than the main file)
-- Just open pull request and describe what you add/fix
+- Just open a pull request and describe what you add/fix and I'll (probably) accept it
 
 ## Star History
 
