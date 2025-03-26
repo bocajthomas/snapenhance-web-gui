@@ -2,7 +2,7 @@
 // @name         SnapEnhance Web with GUI
 // @namespace    snapenhance-web-gui
 // @description  A userscript to Enhance the User experience on Snapchat Web
-// @version      1.2.1
+// @version      1.2.2
 // @author       appelmoesGG,SnapEnhance
 // @source       https://github.com/SnapEnhance/web/
 // @license      GPL-3.0-only
@@ -22,9 +22,14 @@ CURRENT KNOWN BUGS:
 - No typing indication is not working when "Hide Bitmoji" is off
 */
 
-const SEversion = "1.2.1"
+const SEversion = "1.2.2"
+let snapEnhanceSettings = null
 
-if (!"SEversion" in localStorage || localStorage.getItem("SEversion") != SEversion){ // Save current version so we can add settings in future versions of SE (if that makes sense)
+if (!"SEversion" in localStorage){ // Save current version so we can add settings in future versions of SE (if that makes sense)
+    localStorage.setItem("SEversion", SEversion)
+}
+
+if (localStorage.getItem("SEversion") != SEversion){
     localStorage.setItem("SEversion", SEversion)
 }
 
@@ -35,17 +40,45 @@ bc.onmessage = (ev) => {
     bc.postMessage(JSON.stringify(snapEnhanceSettings));
 }
 
-var snapEnhanceSettings = {"Anti Unfocus Blur": false, 
+const baseSnapEnhanceSettings = {"Anti Unfocus Blur": false, 
     "Disable Read Receipts": false, 
     "Hide Bitmoji": false, 
     "No Typing Indication": false
 };
 
+function checkForNewSettings(){
+    let settingsChanged = false;
+
+    for (let setting in snapEnhanceSettings){
+        if (!(setting in baseSnapEnhanceSettings)){
+            delete snapEnhanceSettings[setting];
+            settingsChanged = true;
+        }
+    }
+
+    for (let setting in baseSnapEnhanceSettings){
+        if (!(setting in snapEnhanceSettings)){
+            snapEnhanceSettings[setting] = baseSnapEnhanceSettings[setting];
+            settingsChanged = true;
+        }
+    }
+
+    if (settingsChanged){
+        localStorage.setItem("snapEnhanceSettings", JSON.stringify(snapEnhanceSettings));
+        console.log("Reloading page to add new setting(s)...")
+        location.reload()
+    }
+}
+
 function loadSettings(){
     if ("snapEnhanceSettings" in localStorage){
         console.log("%cLoading settings from localStorage...", "color:rgb(0, 255, 242)");
         snapEnhanceSettings = JSON.parse(localStorage.getItem("snapEnhanceSettings"));
-        bc.postMessage(snapEnhanceSettings)
+        checkForNewSettings();
+        bc.postMessage(snapEnhanceSettings);
+    } else {
+        snapEnhanceSettings = baseSnapEnhanceSettings;
+        bc.postMessage(snapEnhanceSettings);
     }
 }
 
