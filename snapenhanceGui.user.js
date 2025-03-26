@@ -7,7 +7,7 @@
 // @source       https://github.com/SnapEnhance/web/
 // @license      GPL-3.0-only
 // @supportURL   https://github.com/SnapEnhance/web/issues
-// @match        *://snapchat.com/web/*
+// @match        *://*.snapchat.com/web/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=snapchat.com
 // @grant        unsafeWindow
 // @run-at       document-start
