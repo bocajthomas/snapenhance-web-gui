@@ -22,8 +22,10 @@ CURRENT KNOWN BUGS:
 - No typing indication is not working when "Hide Bitmoji" is off
 */
 
-if (!"SEversion" in localStorage){ // Save current version so we can add settings in future versions of SE (if that makes sense)
-    localStorage.setItem("SEversion", "1.2.1")
+const SEversion = "1.2.1"
+
+if (!"SEversion" in localStorage || localStorage.getItem("SEversion") != SEversion){ // Save current version so we can add settings in future versions of SE (if that makes sense)
+    localStorage.setItem("SEversion", SEversion)
 }
 
 const bc = new BroadcastChannel("settingsBroadcast")
@@ -89,7 +91,7 @@ function injectGui(){
 
 
 (function (window) {
-    console.log("%cWelcome to SnapEnhance Web!", "font-size: 2em; background-color: black; font-style: bold;")
+    console.log(`%cWelcome to SnapEnhance Web v${localStorage.getItem("SEversion")}!`, "font-size: 2em; background-color: black; font-style: bold;")
 
 
     function simpleHook(object, name, proxy) {
@@ -132,6 +134,7 @@ function injectGui(){
         }
         async function hookPostRequest(request, response) {
             if (request.headers && request.headers.get("content-type") === "application/grpc-web+proto") {
+                console.log("GRPC SHIT:", request.url)
                 const arrayBuffer = await response.arrayBuffer();
                 response.arrayBuffer = async () => arrayBuffer;
             }
@@ -167,6 +170,11 @@ function injectGui(){
                 });
             }
             // @ts-ignore
+            if (args[0].url == "https://web.snapchat.com/messagingcoreservice.MessagingCoreService/SendTypingNotification"){
+                console.log("bypass typing maybe maybe???")
+                return new Promise(new Response(null, { status: 200 }));
+            }
+
             const result = oldFetch(...args);
             return new Promise(async (resolve, reject) => {
                 try {
