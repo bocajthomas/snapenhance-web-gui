@@ -1,3 +1,0 @@
-@echo off
-echo Compiling...
-tsc
