@@ -1,8 +1,8 @@
 # SnapEnhance Web
-The web version of SnapEnhance (now with a cool GUI😎)
+The web version of SnapEnhance (now with a cool GUI 😎)
 
 ## Features
-- 🚧Bypass upload size
+- 🚧 Bypass upload size
 - ⬇️ Download any media using right click context menu
 - 📲 Bypass screenshot detection
 - 🔎 Remove blur when unfocused
@@ -22,13 +22,10 @@ The web version of SnapEnhance (now with a cool GUI😎)
 3. Now you can click the link below to install the userscript instantly:
 https://raw.githubusercontent.com/appelmoesgg/snapenhance-web-gui/master/snapenhanceGui.user.js
 > [!WARNING]
-> If you are currently using the snapEnhance WEB script, you should disable/delete it because they will interfere with eachother
-
-## Userscript Source
-[appelmoesGG's Github](https://github.com/appelmoesgg/snapenhance-web-gui/blob/main/snapenhanceGui.user.js)
+> If you are currently using the upstream script, you should disable/delete, This will cause both scripts to interfere with eachother and may cause unexpected bugs 
 
 ## Developing
-- Main file is just snapenhanceGui.js <br>
+- Main file is just [snapenhanceGui.js](https://github.com/appelmoesgg/snapenhance-web-gui/blob/main/snapenhanceGui.user.js)<br>
 - Just open a pull request and describe what you add/fix and I'll (probably) accept it
 
 ## Star History

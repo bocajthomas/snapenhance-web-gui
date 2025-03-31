@@ -1,0 +1,36 @@
+name: Release
+on:
+    workflow_dispatch:
+
+jobs:
+    build-and-release:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                node-version: '16'
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Extract version
+              id: extract_version
+              run: |
+                VERSION=$(grep -oP '^// @version\s+\K.*' snapenhanceGui.user.js)
+                echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+            - name: Minify code
+              run: |
+                npx terser snapenhanceGui.user.js --comments '/^==\/?UserScript==/' -o dist/snapenhanceGui.user.min.js
+                cat <(grep -E '^// ==UserScript==|^// ==/UserScript==|^// @' snapenhanceGui.user.js) dist/snapenhanceGui.user.min.js > dist/snapenhanceGui.user.min.js.tmp
+                mv dist/snapenhanceGui.user.min.js.tmp dist/snapenhanceGui.user.${{ env.VERSION }}-release.js
+
+            - name: Upload Artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: snapenhanceGui-${{ env.VERSION }}
+                path: dist/snapenhanceGui-${{ env.VERSION }}-release.js
